@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AliExpress Parser</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <script>
+        function showLoader() {
+            document.getElementById('loader').style.display = 'block';
+        }
+    </script>
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            {% if user.is_authenticated %}
+                <p>Welcome, {{ user.username }} | <a href="/accounts/logout/">Logout</a></p>
+            {% else %}
+                <p><a href="/accounts/login/">Login</a> | <a href="/accounts/register/">Register</a></p>
+            {% endif %}
+            <hr>
+            {% block content %}{% endblock %}
+        </div>
+    </section>
+</body>
+</html>

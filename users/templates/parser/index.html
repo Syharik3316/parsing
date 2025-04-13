@@ -1,0 +1,27 @@
+{% extends 'parser/base.html' %}
+{% block content %}
+<h2 class="title">AliExpress Parser</h2>
+<form method="post" onsubmit="showLoader()">{% csrf_token %}
+    <div class="field">
+        <label class="label">AliExpress URL</label>
+        <div class="control">
+            <input class="input" type="text" name="url" placeholder="https://www.aliexpress.com/...">
+        </div>
+    </div>
+    <button class="button is-success">Parse</button>
+</form>
+<div id="loader" style="display:none;">Loading...</div>
+{% if products %}
+    <hr>
+    <h3 class="subtitle">Found {{ products|length }} product(s)</h3>
+    <div class="box">
+        {% for product in products %}
+            <div>
+                <strong>{{ product.title }}</strong><br>
+                Price: {{ product.price }}
+            </div>
+            <hr>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}
