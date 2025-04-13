@@ -1,0 +1,17 @@
+{% extends "users/base.html" %}
+{% block title %} Домашняя страница {% endblock title%}
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="jumbotron">
+        <h1 class="display-4">Добро пожаловать, {{user.first_name.title|default:'Пользователь!'}}</h1>
+        <p class="lead">
+            Для входа в сервис <b>вам нужно войти в1234124 свой аккаунт.</b> Или если такового нету, </b>вы можете зарегистрировать новый.</b>
+        </p>
+        <hr class="my-4">
+        <p class="lead">
+                <a class="btn btn-primary btn-lg" href="{% url 'logout' %}" role="button">Выйти</a>
+        </p>
+    </div>
+    {% endif %}
+
+{% endblock content %}
